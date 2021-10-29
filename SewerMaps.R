@@ -33,12 +33,13 @@ base_osm <- get_tiles(st_buffer(st_as_sfc(st_bbox(Join_Sewer_Serv_Data)), 10000)
 
 
 # Plot bivariate choroplet map
-bivariate_plot <- function(file_name, biv_cols, normalise_method){
+bivariate_plot <- function(file_name, biv_cols, normalise_method, biv_palette='BlueOrange'){
   png(filename=file_name,
       width = 425*2, height = 480*2 )
 
   bivariate_choropleth(Join_Sewer_Serv_Data, biv_cols,
                        basemap=base_osm, bm_alpha=0.7, bivmap_scale=T,
+                       biv_palette=biv_palette,
                        bivmap_labels=c('How Much Shit?*', 'How well do they measure it?**'),
                        poly_alpha=0.8, scale_pos = c('left', 'bottom'),
                        bivmap_label_point=Sewer_Serv_Areas_cent,
@@ -54,7 +55,8 @@ bivariate_plot <- function(file_name, biv_cols, normalise_method){
 }
 
 choropleth_plot <- function(poly, col_name, col_pal, title, file_name,bm_alpha=0.5,
-                            poly_alpha=0.8, style='jenks'){
+                            poly_alpha=0.8, style='jenks', digits = 0, port=T,
+                            sci=F){
   # png(filename=file_name,
   #     width = 425*2, height = 480*2 )
   tm <-tm_shape(base_osm, bbox=st_bbox(poly))+
@@ -65,8 +67,8 @@ choropleth_plot <- function(poly, col_name, col_pal, title, file_name,bm_alpha=0
                 alpha=poly_alpha,
                 style=style,
                 # n=nrow(poly),
-                legend.is.portrait=T,
-                legend.format=list(scientific=F),
+                legend.is.portrait=port,
+                legend.format=list(scientific=sci),
                 title= title) +
     tm_shape(Sewer_Serv_Areas_cent)+
     tm_dots('black', size=0.2, legend.show=F) +
@@ -76,7 +78,8 @@ choropleth_plot <- function(poly, col_name, col_pal, title, file_name,bm_alpha=0
               legend.title.size = 2.2,
               legend.text.size = 1.5,
               legend.title.fontface =3,
-              legend.format = list(digits = 0)) +
+              legend.height = 0.2,
+              legend.format = list(digits = digits)) +
     # Add scale bar
     tm_scale_bar(
       position=c("left", "bottom"), width=0.25, text.size=1.4) +
@@ -100,11 +103,13 @@ bivariate_plot(file_name = "Bivariate_PopNormal.png",
 
 bivariate_plot(file_name = "Bivariate_AreaNormal.png",
                biv_cols= c("cso_flow_durati_per_km2", "perc_mon"),
-               normalise_method = 'divided by sewerage service area')
+               normalise_method = 'divided by sewerage service area',
+               biv_palette='BlueRed')
 
 bivariate_plot(file_name = "Bivariate_Total.png",
                biv_cols= c("cso_flow_duration", "perc_mon"),
-               normalise_method = '')
+               normalise_method = '',
+               biv_palette='GreenPurple')
 
 # Single value Choropleths
 choropleth_plot(Join_Sewer_Serv_Data,
@@ -116,14 +121,16 @@ choropleth_plot(Join_Sewer_Serv_Data,
 choropleth_plot(Join_Sewer_Serv_Data,
                 col_name = "cso_flow_duration_per_pop",
                 col_pal= inferno(nrow(Join_Sewer_Serv_Data)),
-                title= 'SSO flow duration (hrs) divided by Pop. density (people per km^2)',
-                style='pretty',
-                file_name='Choropleth_flow_duration_per_pop.png')
+                title= 'Log10 SSO flow duration (hrs) divided by Pop. density (people per km^2)',
+                style='log10',
+                file_name='Choropleth_flow_duration_per_pop.png',
+                port = F)
 
 choropleth_plot(Join_Sewer_Serv_Data,
                 col_name = "cso_flow_durati_per_km2",
                 col_pal= inferno(nrow(Join_Sewer_Serv_Data)),
                 title= 'SSO flow duration (hrs) divided by sewerage service area (km^2)',
                 style='pretty',
-                file_name='Choropleth_flow_duration_per_km2.png')
+                file_name='Choropleth_flow_duration_per_km2.png',
+                digits=4, sci=T)
 
