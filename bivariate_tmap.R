@@ -220,7 +220,7 @@ get_bivariate_choropleth <- function (
   if (!is.null(footnote)){
     bivmap <- bivmap +
       tm_credits(footnote, position=c("right", "bottom"),
-                 size=0.9, width=0.6)
+                 size=1.0, width=0.6)
   }
 
   if (!is.null(title)){
