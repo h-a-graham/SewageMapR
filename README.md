@@ -2,6 +2,8 @@
 
 Some Maps about sewage...
 
+Check out the Rivers Trust's great [interactive map](https://experience.arcgis.com/experience/e834e261b53740eba2fe6736e37bbc7b) to explore this data:
+
 ## Data sourecs:
 
 [**England Unmonitored CSOs 2020**](https://data.catchmentbasedapproach.org/datasets/theriverstrust::-england-unmonitored-csos-2020/about)
