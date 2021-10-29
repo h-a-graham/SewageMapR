@@ -144,7 +144,7 @@ bivariate_choropleth(Join_Sewer_Serv_Data, c("cso_flow_durati_per_km2", "perc_mo
                      poly_alpha=0.7, scale_pos = c('left', 'bottom'),
                      bivmap_label_point=Sewer_Serv_Areas_cent2,
                      bivmap_label_col = 'COMPANY_r',
-                     footnote=c(sprintf("* The total volume of Sewer Storm Overflows (SSO) for 2020 divided by water company service area \n
+                     footnote=c(sprintf("* The total volume of Sewer Storm Overflows (SSO) for 2020 divided by sewerage service area \n
 ** The proportion of the SSOs that were monitored in 2020 \n
 %s \n
 © Environment Agency copyright and/or database right 2020. Dŵr Cymru/Welsh Water. The Rivers Trust. All rights reserved."
