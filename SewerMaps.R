@@ -128,7 +128,7 @@ choropleth_plot(Join_Sewer_Serv_Data,
 
 choropleth_plot(Join_Sewer_Serv_Data,
                 col_name = "cso_flow_durati_per_km2",
-                col_pal= inferno(nrow(Join_Sewer_Serv_Data)),
+                col_pal= mako(nrow(Join_Sewer_Serv_Data)),
                 title= 'SSO flow duration (hrs) divided by sewerage service area (km^2)',
                 style='pretty',
                 file_name='Choropleth_flow_duration_per_km2.png',
