@@ -17,28 +17,27 @@ Check out the Rivers Trust's great [interactive map](https://experience.arcgis.c
 [**Gridded Residential Population Density 2011**](https://data.gov.uk/dataset/ca2daae8-8f36-4279-b15d-78b0463c61db/uk-gridded-population-2011-based-on-census-2011-and-land-cover-map-2015)
 
 ## The maps:
-1. First let's compare the volume of SSO discharge (normalised by population density) and the % of SSOs that are actually monitoried.
-More brown here means lots of SSO discharge but more monitoring. Orange means lots of SSO discharge but low monitoring. Blue shows
-lower SSO discharge and higher monitoring.
+
+1.  First let's compare the volume of SSO discharge (normalised by population density) and the % of SSOs that are actually monitoried. More brown here means lots of SSO discharge but more monitoring. Orange means lots of SSO discharge but low monitoring. Blue shows lower SSO discharge and higher monitoring.
 
 ![Bivariate Sewage1](Bivariate_PopNormal.png)
 
-2. Same story again but now normalising by Sewerage Service Areas...
+1.  Same story again but now normalising by Sewerage Service Areas...
 
 ![Bivariate Sewage2](Bivariate_AreaNormal.png)
 
-3. And finally the full story with no normalising. Perhaps not a fair test but an indication of what's being released.
+1.  And finally the full story with no normalising. Perhaps not a fair test but an indication of what's being released.
 
 ![Bivariate Sewage3](Bivariate_Total.png)
 
-4. Choropleth map of the % od monitored SSOs in each sewerage service area.
+1.  Choropleth map of the % od monitored SSOs in each sewerage service area.
 
 ![Choro Sewage1](Choropleth_PercentMon.png)
 
-5. Choropleth map of the total duration (days) of monitored SSOs in each sewerage service area (normalised by population density)
+1.  Choropleth map of the total duration (days) of monitored SSOs in each sewerage service area (normalised by population density)
 
 ![Choro Sewage2](Choropleth_flow_duration_per_pop.png)
 
-6. Choropleth map of the total duration (days) of monitored SSOs in each sewerage service area (normalised by Sewerage Service Area.)
+1.  Choropleth map of the total duration (days) of monitored SSOs in each sewerage service area (normalised by Sewerage Service Area.)
 
 ![Choro Sewage3](Choropleth_flow_duration_per_km2.png)
