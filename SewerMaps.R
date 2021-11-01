@@ -23,6 +23,12 @@ library(viridisLite)
 source('SewerMapData.R')
 source("bivariate_tmap.R") # source functions for bivariate mapping
 
+# get data...
+data_list <- process_SSO_Data()
+Join_Sewer_Serv_Data <- data_list$SSA_Data
+Sewer_Serv_Areas_cent<- data_list$SSA_centroid
+
+# setup Tmap....
 tmap_mode("plot")
 
 
@@ -44,7 +50,7 @@ bivariate_plot <- function(file_name, biv_cols, normalise_method, biv_palette='B
                        poly_alpha=0.8, scale_pos = c('left', 'bottom'),
                        bivmap_label_point=Sewer_Serv_Areas_cent,
                        bivmap_label_col = 'COMPANY_r',
-                       footnote=c(sprintf("* The total volume of Sewer Storm Overflows (SSO) for 2020 %s \n
+                       footnote=c(sprintf("* The total Duration of flow from all Sewer Storm Overflows (SSO) for 2020 %s \n
 ** The proportion of the SSOs that were monitored in 2020 \n
 %s \n
 © Environment Agency copyright and/or database right 2020. Dŵr Cymru/Welsh Water. The Rivers Trust. All rights reserved."
@@ -129,7 +135,7 @@ choropleth_plot(Join_Sewer_Serv_Data,
 choropleth_plot(Join_Sewer_Serv_Data,
                 col_name = "cso_flow_durati_per_km2",
                 col_pal= mako(nrow(Join_Sewer_Serv_Data)),
-                title= 'SSO flow duration (hrs) divided by sewerage service area (km^2)',
+                title= 'SSO flow duration (days) divided by sewerage service area (km^2)',
                 style='pretty',
                 file_name='Choropleth_flow_duration_per_km2.png',
                 digits=4, sci=T)
